@@ -1,2 +1,890 @@
-# onlineservice-allindia
-Metro Business Centre (100+ Problems – One Solution) 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Business Centre - All Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #ff6b00;
+            --accent: #4caf50;
+            --dark: #1a2a4a;
+            --light: #f8f9fc;
+            --gray: #6c757d;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(120deg, var(--primary), #003d82);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-info:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 42, 74, 0.85), rgba(26, 42, 74, 0.95)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3') no-repeat center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin: 0 auto 2.5rem;
+            max-width: 1200px;
+        }
+
+        .category-nav h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .category-btn {
+            background: #f0f4ff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .category-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Service Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 0 20px 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(120deg, var(--primary), #004a9c);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-header i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 25px 20px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eaeaea;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list li i {
+            color: var(--accent);
+            margin-right: 12px;
+            margin-top: 4px;
+            font-size: 0.9rem;
+        }
+
+        .service-name {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .hindi-name {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .whatsapp-contact {
+            background: #25D366;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        .whatsapp-contact:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .category-nav {
+                padding: 1rem;
+            }
+            
+            .categories {
+                gap: 8px;
+            }
+            
+            .category-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-btn {
+                flex: 1 0 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div>
+                        <h1>Metro <span>Business</span> Centre</h1>
+                        <div class="tagline">100+ Problems – One Solution</div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/918467950920">8467950920</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Your One-Stop Solution Center</h2>
+            <p>Comprehensive services for travel, insurance, financial needs, government documentation, bill payments, and more - all under one roof.</p>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <div class="container">
+        <div class="category-nav">
+            <h3>Browse Services by Category</h3>
+            <div class="categories">
+                <button class="category-btn active"><i class="fas fa-plane"></i> Travel</button>
+                <button class="category-btn"><i class="fas fa-shield-alt"></i> Insurance</button>
+                <button class="category-btn"><i class="fas fa-chart-line"></i> Financial</button>
+                <button class="category-btn"><i class="fas fa-file-contract"></i> Government</button>
+                <button class="category-btn"><i class="fas fa-receipt"></i> Utility Bills</button>
+                <button class="category-btn"><i class="fas fa-ellipsis-h"></i> Other Services</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="container">
+        <div class="services-grid">
+            <!-- Travel Services -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-plane-departure"></i>
+                    <h3>Travel Services</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Flight Ticket - Domestic / International</span>
+                                <span class="hindi-name">फ़्लाइट टिकट - घरेलू / अंतर्राष्ट्रीय</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Train Ticket</span>
+                                <span class="hindi-name">ट्रेन टिकट</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Bus Ticket</span>
+                                <span class="hindi-name">बस टिकट</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Hotel Booking</span>
+                                <span class="hindi-name">होटल बुकिंग</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Insurance Services -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Insurance Services</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Bike Insurance</span>
+                                <span class="hindi-name">बाइक इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Car Insurance</span>
+                                <span class="hindi-name">कार इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Auto Insurance</span>
+                                <span class="hindi-name">ऑटो इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Bus Insurance</span>
+                                <span class="hindi-name">बस इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Truck Insurance</span>
+                                <span class="hindi-name">ट्रक इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Health Insurance</span>
+                                <span class="hindi-name">हेल्थ इंश्योरेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Life Insurance</span>
+                                <span class="hindi-name">लाइफ़ इंश्योरेंस</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Financial Services -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Financial Services</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Credit Card</span>
+                                <span class="hindi-name">क्रेडिट कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Personal Loan</span>
+                                <span class="hindi-name">पर्सनल लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Business Loan</span>
+                                <span class="hindi-name">बिज़नेस लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Home Loan</span>
+                                <span class="hindi-name">होम लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Construction Loan</span>
+                                <span class="hindi-name">कंस्ट्रक्शन लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Plot + Construction Loan</span>
+                                <span class="hindi-name">प्लॉट + कंस्ट्रक्शन लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Mutual Funds</span>
+                                <span class="hindi-name">म्यूचुअल फंड्स</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Government & Document Services -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Government & Document Services</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Aadhaar Card Correction</span>
+                                <span class="hindi-name">आधार कार्ड सुधार</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">New PAN Card - Apply & Correction</span>
+                                <span class="hindi-name">नया पैन कार्ड आवेदन और सुधार</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Driving Licence - Apply & Correction</span>
+                                <span class="hindi-name">ड्राइविंग लाइसेंस आवेदन और सुधार</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">FSSAI Food Licence</span>
+                                <span class="hindi-name">एफएसएसएआई खाद्य लाइसेंस</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Passport</span>
+                                <span class="hindi-name">पासपोर्ट</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Udyam Registration Certificate</span>
+                                <span class="hindi-name">उद्यम पंजीकरण प्रमाणपत्र</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Ration Card</span>
+                                <span class="hindi-name">राशन कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Voter ID Card</span>
+                                <span class="hindi-name">वोटर आईडी कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Income / Caste / Birth / Death / Address Certificates</span>
+                                <span class="hindi-name">आय / जाति / जन्म / मृत्यु / निवास प्रमाण पत्र</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Khasra / Khatauni</span>
+                                <span class="hindi-name">खसरा / खतौनी</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Utility & Bill Payments -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-receipt"></i>
+                    <h3>Utility & Bill Payments</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Electricity Bill Payment</span>
+                                <span class="hindi-name">बिजली बिल</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Gas Bill</span>
+                                <span class="hindi-name">गैस बिल</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Broadband Bill</span>
+                                <span class="hindi-name">ब्रॉडबैंड बिल</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Water Bill</span>
+                                <span class="hindi-name">पानी का बिल</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Loan Payment</span>
+                                <span class="hindi-name">लोन भुगतान</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Municipal Services & Taxes</span>
+                                <span class="hindi-name">नगरपालिका सेवाएँ और कर</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+            <div class="service-card">
+                <div class="card-header">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <h3>Other Services</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="service-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Printout - Home Delivery</span>
+                                <span class="hindi-name">प्रिंट आउट - होम डिलीवरी</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Rent Agreement</span>
+                                <span class="hindi-name">रेंट एग्रीमेंट</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">E-Stamp</span>
+                                <span class="hindi-name">ई-स्टाम्प</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Mobile / DTH Recharge</span>
+                                <span class="hindi-name">मोबाइल / डीटीएच रिचार्ज</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Admit Card / Result</span>
+                                <span class="hindi-name">प्रवेश पत्र / रिज़ल्ट</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Fast Tag Recharge</span>
+                                <span class="hindi-name">फास्टैग रिचार्ज</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Pension Card</span>
+                                <span class="hindi-name">पेंशन कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">PM Kisan</span>
+                                <span class="hindi-name">पीएम किसान</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">NREGA</span>
+                                <span class="hindi-name">नरेगा</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Student Scholarship</span>
+                                <span class="hindi-name">छात्रवृत्ति</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Ayushman Card</span>
+                                <span class="hindi-name">आयुष्मान कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">E-Shram Card</span>
+                                <span class="hindi-name">ई-श्रम कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Labour Card</span>
+                                <span class="hindi-name">श्रम कार्ड</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Kisan Loan</span>
+                                <span class="hindi-name">किसान लोन</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">PM Atal Pension Yojana</span>
+                                <span class="hindi-name">प्रधानमंत्री अटल पेंशन योजना</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="service-name">Government & Private Subsidy Schemes</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Metro <span>Business</span> Centre</div>
+                <p>Your trusted partner for all essential services</p>
+                <a href="https://wa.me/918467950920" class="whatsapp-contact">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp: 8467950920
+                </a>
+                <div class="copyright">
+                    &copy; 2023 Metro Business Centre. All services available.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // In a real implementation, this would filter the services
+                    // For this demo, we'll just scroll to the top
+                    window.scrollTo({
+                        top: 600,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Service card hover effect enhancement
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
